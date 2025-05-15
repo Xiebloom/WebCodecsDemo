@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./WebCodecsDemo.css";
 
-const WebCodecsDemo: React.FC = () => {
+export const WebCodecsDemo: React.FC = () => {
   // References for video and canvas elements
   const videoRef = useRef<HTMLVideoElement>(null);
   const sourceCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -197,7 +197,7 @@ const WebCodecsDemo: React.FC = () => {
     setIsActive(true);
 
     // Start capturing frames
-    animationFrameRef.current = requestAnimationFrame(() => captureFrame(true));
+    animationFrameRef.current = requestAnimationFrame(() => captureFrame());
 
     // Start encoding frames at a regular interval
     const encodingInterval = 1000 / frameRate; // ms between frames
@@ -280,7 +280,7 @@ const WebCodecsDemo: React.FC = () => {
             width={videoWidth}
             height={videoHeight}
             className="source-canvas"
-            style={{ display: "block", marginTop: 8, border: "1px solid #aaa" }}
+            // style={{ display: "block", marginTop: 8, border: "1px solid #aaa" }}
           />
         </div>
 
@@ -297,5 +297,3 @@ const WebCodecsDemo: React.FC = () => {
     </div>
   );
 };
-
-export default WebCodecsDemo;
